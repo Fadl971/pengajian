@@ -28,7 +28,8 @@
                 <label>Alamat</label>
                 <textarea name="alamat" class="form-control" required>{{ $peserta->alamat }}</textarea>
             </div>
-            <button type="submit" class="btn btn-warning">Update</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{{ route('peserta.index') }}" class="btn btn-secondary ">Kembali</a>
         </form>
     </div>
 </body>

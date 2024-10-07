@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\peserta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\PesertaNotification;
 
 class pesertaController extends Controller
 {
@@ -30,10 +32,7 @@ class pesertaController extends Controller
         $peserta = peserta::create($validated);
 
         // Kirim email ke peserta
-        Mail::raw("Halo {$peserta->nama}, terima kasih telah mendaftar!", function ($message) use ($peserta) {
-            $message->to($peserta->email)
-                    ->subject('Pendaftaran Berhasil');
-        });
+        Mail::to($peserta->email)->send(new PesertaNotification($peserta));
 
         return redirect()->route('peserta.index')->with('success', 'Peserta berhasil ditambahkan dan email terkirim!');
     }
@@ -42,6 +41,12 @@ class pesertaController extends Controller
     {
         $peserta = peserta::findOrFail($id);
         return view('peserta.edit', compact('peserta'));
+    }
+
+    public function show($id)
+    {
+        $peserta = peserta::findOrFail($id);
+        return view('peserta.show', compact('peserta'));
     }
 
     public function update(Request $request, $id)

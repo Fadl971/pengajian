@@ -27,7 +27,8 @@
                 <label>Alamat</label>
                 <textarea name="alamat" class="form-control" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="submit" class="btn btn-primary">Tambah</button>
+            <a href="{{ route('peserta.index') }}" class="btn btn-secondary ">Kembali</a>
         </form>
     </div>
 </body>

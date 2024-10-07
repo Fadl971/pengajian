@@ -36,6 +36,7 @@
                     <td>{{ $peserta->alamat }}</td>
                     <td>
                         <a href="{{ route('peserta.edit', $peserta->id) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('peserta.show', $peserta->id) }}" class="btn btn-info">View</a>
                         <form action="{{ route('peserta.destroy', $peserta->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
