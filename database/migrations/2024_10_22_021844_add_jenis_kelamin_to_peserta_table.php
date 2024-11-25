@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pesertas', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->string('telepon');
-            $table->string('email');
-            $table->text('alamat');
-            $table->text('catatan')->nullable();
-            $table->timestamps();
+        Schema::table('peserta', function (Blueprint $table) {
+            $table->string('jenis_kelamin')->after('id');
         });
     }
 
@@ -27,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pesertas');
+        Schema::table('peserta', function (Blueprint $table) {
+            $table->dropColumn('jenis_kelamin');
+        });
     }
 };

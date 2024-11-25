@@ -23,4 +23,4 @@ class PesertaNotification extends Mailable
         return $this->subject('Pendaftaran Berhasil')
                     ->view('emails.peserta');
     }
-}
+}  
